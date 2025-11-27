@@ -1,0 +1,188 @@
+
+
+
+/* Faz o body ocupar a tela toda */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* O conteúdo principal cresce e empurra o footer */
+main {
+  flex: 1;
+}
+
+/* espaçamento para compensar o header fixo */
+.header-spacer {
+  height: 50px;
+}
+
+/* Termos agora com padding normal */
+.termos {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px 20px 80px; /* só respiro normal */
+  display: block;
+  min-height: calc(100vh - -350px);
+}
+
+/* Breadcrumb fica acima do card */
+.termos .breadcrumb {
+  margin: 0 0 45px;      /* espaço só embaixo */
+  font-size: 14px;
+  color: #aaa;
+  display: block;        /* 🔥 força ficar acima */
+}
+
+.termos .breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.termos .breadcrumb a:hover {
+  color: #d0bc64;
+}
+
+.termos .breadcrumb strong {
+  color: #fff;
+}
+.termos .breadcrumb strong:hover {
+  color: #d0bc64;
+}
+/* Card principal */
+.termos-card {
+  border: 1px solid #d0bc64;
+  border-radius: 10px;
+  padding: 30px;
+  background: #121212;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.termos-card h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #d0bc64;
+  border-bottom: 1px solid #d0bc64; /* 🔥 linha amarela */
+  padding-bottom: 14px;             /* espaço entre texto e linha */
+}
+
+
+/* Seções */
+.termos-section {
+  margin-bottom: 24px;
+  padding-top: 20px;
+}
+
+.termos-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.termos-section h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #d0bc64;
+  letter-spacing: 0.5px;
+}
+
+.termos-section p,
+.termos-section ul {
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.termos-section ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* Rodapé */
+.termos-footer {
+  margin-top: 45px;
+  border-top: 1px solid #d0bc64;
+  padding-top: 25px;
+  font-size: 14px;
+  color: #bbb;
+  text-align: center;
+}
+/* ============================= */
+/* 📱 TERMOS - MOBILE */
+@media (max-width: 768px) {
+  .termos.container {
+    padding: 16px;
+    margin: 0 auto;
+    max-width: 100%;
+    margin-bottom: 220px; /* 🔥 espaço extra para não colar no footer */
+  }
+
+  /* breadcrumb */
+  .breadcrumb {
+    font-size: 13px;
+    margin-bottom: 18px;
+    color: #bbb;
+    text-align: left;
+  }
+  .breadcrumb a {
+    color: #d0bc64;
+    text-decoration: none;
+  }
+
+  /* card principal */
+  .termos-card {
+    background: #121212;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 10px;
+    padding: 18px;
+    color: #ddd;
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 40px; /* 🔥 respiro antes do footer */
+  }
+
+  .termos-card h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 18px;
+    color: #d0bc64;
+  }
+
+  .termos-section {
+    margin-bottom: 20px;
+  }
+
+  .termos-section h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #fff;
+    border-left: 3px solid #d0bc64;
+    padding-left: 8px;
+  }
+
+  .termos-section p,
+  .termos-section li {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 8px;
+  }
+
+  .termos-section ul {
+    padding-left: 18px;
+    margin: 8px 0;
+  }
+
+  /* rodapé do card */
+  .termos-footer {
+    margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    font-size: 13px;
+    text-align: center;
+    color: #aaa;
+  }
+}

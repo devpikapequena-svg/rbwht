@@ -1,0 +1,384 @@
+/* Remove sublinhado dos links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Garantir que os cards não fiquem com cor de link */
+.home-card {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* pra ocupar todo o espaço clicável */
+}
+
+
+/* root + container */
+.home-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.home-container {
+  flex: 1;
+  padding: 100px 0px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* seção de produtos */
+.home-produtos h2 {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #d0bc64;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 333px); /* 3 cards fixos de 333px */
+  gap: 28px;
+  justify-content: center; /* centraliza os 3 no meio */
+}
+
+/* card */
+.home-card {
+  border: 1px solid #d0bc64;
+  border-radius: 12px;
+  background: #121212;
+  overflow: hidden;
+  
+  transition: transform 0.2s ease;
+}
+.home-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #d0bc64;
+}
+
+.home-card-img {
+  position: relative;
+  width: 100%;
+  height: 333px;
+  border-bottom: 1px solid #d0bc64;
+
+}
+.home-badge {
+  position: absolute;
+  top: 10px; left: 10px;
+  background: #d0bc64;
+  color: #fff;
+  font-size: 14px;
+  padding: 4px 16px;
+  border-radius: 8px;
+}
+.home-reflection {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: skewX(-0deg);
+  pointer-events: none;
+  z-index: 2;
+  animation: shine 6s infinite linear alternate;
+  /* 👆 agora ele vai e volta */
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+
+/* conteúdo do card */
+.home-card-info {
+  padding: 14px;
+}
+.home-card-info h3 {
+  font-size: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.home-verify-icon { color: #d0bc64; }
+
+.home-stars {
+  font-size: 13px;
+  margin: 6px 0 10px;
+  color: #bbb;
+}
+.home-stars-icons { color: #d0bc64; margin-right: 4px; }
+
+.home-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.home-new {
+  font-weight: 700;
+  color: #00ff98;
+}
+.home-white-price { color: #fff; }
+.home-price s {
+  font-size: 13px;
+  color: #ff5555;
+}
+
+/* layout principal */
+.home-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* sidebar + produtos */
+  gap: 28px;
+}
+
+/* sidebar */
+.home-sidebar {
+  background: #121212;
+  border: 1px solid rgb(46, 46, 46);
+  border-radius: 12px;
+  padding: 20px;
+  height: fit-content;
+}
+.home-sidebar h3 {
+  color: #fff;
+  font-size: 19px;
+  margin-bottom: 14px;
+  padding-bottom: 18px;              /* espaço entre texto e a linha */
+  border-bottom: 1px solid #2e2e2e; /* linha dourada */
+}
+ .categoria-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #2e2e2e; /* ✅ borda visível para opções inativas */
+  color: #fff;  
+  opacity: 0.75;
+  border-radius: 6px;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 530;
+  cursor: pointer;
+  transition: all .2s ease;
+  text-align: left;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.categoria-btn:hover {
+  opacity: 1;
+  background: rgba(208, 188, 100, 0.08);
+  border-color: #d0bc646b; /* dourado suave */
+  color: #d0bc64;
+}
+
+/* barrinha lateral esquerda quando ativo */
+.categoria-btn.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #d0bc64;
+  border-radius: 6px 0 0 6px;
+}
+
+.categoria-btn.active {
+  background: #d0bc6426;
+  color: #d0bc64;
+  opacity: 1;
+  border-color: #d0bc64; /* borda totalmente dourada quando ativa */
+}
+
+
+/* breadcrumb */
+.breadcrumb {
+  font-size: 14px;
+  margin: 0 0 48px;
+  color: #aaa;
+}
+.breadcrumb a {
+  color: #e4e4e4;
+  text-decoration: none;
+}
+.breadcrumb strong {
+  color: #fff;
+}
+/* Esconde no desktop */
+.mobile-categorias {
+  display: none;
+}
+
+/* Mostra no mobile */
+@media (max-width: 768px) {
+  .mobile-categorias {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .mobile-categorias .categoria-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE (<= 768px) – 2 colunas GRANDES */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 50px 12px 120px;
+    max-width: 100%;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    margin: 0 0 16px;
+  }
+
+
+  /* 1 coluna estrutural (sem sidebar) */
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* 👉 aumenta a largura útil de cada card:
+     usa min 210px pra caber 2 colunas nos iPhones grandes */
+  .home-grid {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 22px;               /* gap menor pra sobrar mais espaço pros cards */
+    justify-content: center; /* centraliza se sobrar espaço */
+  }
+
+  .home-card {
+    border-radius: 12px;
+  }
+
+  /* 👉 imagem mais alta pra dar presença ao card */
+  .home-card-img {
+    height: 240px;           /* antes 200px */
+  }
+
+  .home-badge {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+
+  .home-card-info {
+    padding: 14px;
+  }
+
+  .home-card-info h3 {
+    font-size: 15px;         /* leve boost */
+  }
+
+  .home-stars {
+    font-size: 12.5px;
+    margin: 6px 0 8px;
+  }
+
+  .home-price .home-new { font-size: 15.5px; }
+  .home-price s { font-size: 12.5px; }
+}
+
+/* 📱 celulares bem pequenos <= 380px -> 1 coluna */
+@media (max-width: 380px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-card-img {
+    height: 200px;           /* um pouco menor pra caber bem */
+  }
+}
+/* ============================= */
+/* 📱 MOBILE (<= 768px) – 2 colunas */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 40px 14px 100px;
+    max-width: 100%;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    margin: 0 0 20px;
+  }
+
+  /* esconde a sidebar */
+  .home-sidebar { display: none; }
+
+  /* 1 coluna estrutural (sem sidebar) */
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* grid de produtos em 2 colunas */
+  .home-grid {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    gap: 18px;
+  }
+
+  /* cards */
+  .home-card {
+    border-radius: 10px;
+    border: 1px solid #2e2e2e;
+  }
+
+  .home-card-img {
+    height: 190px;
+  }
+
+  .home-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+
+  .home-card-info {
+    padding: 10px;
+  }
+
+  .home-card-info h3 {
+    font-size: 14px;
+  }
+
+  .home-stars {
+    font-size: 12px;
+    margin: 4px 0 6px;
+  }
+
+  .home-price .home-new {
+    font-size: 14.5px;
+  }
+  .home-price s {
+    font-size: 12px;
+  }
+}
+
+/* 📱 celulares muito pequenos (<= 420px) → 1 coluna */
+@media (max-width: 420px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .home-card-img {
+    height: 180px;
+  }
+
+  .home-card-info h3 {
+    font-size: 15px; /* aumenta título pra destacar em 1 coluna */
+  }
+}

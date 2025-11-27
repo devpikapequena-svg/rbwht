@@ -1,0 +1,559 @@
+/* ===== ROOT ===== */
+.product-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #121212;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+.header-spacer {
+  height: 80px; /* altura do header fixo */
+}
+.product-container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== BREADCRUMB ===== */
+.product-breadcrumb {
+  font-size: 14px;
+  margin: 0 0 28px;
+  color: #aaa;
+}
+.product-breadcrumb a {
+  color: #e4e4e4;
+  text-decoration: none;
+}
+.product-breadcrumb strong {
+  color: #fff;
+}
+.product-breadcrumb span {
+  color: #d0bc64;
+}
+
+/* ===== GRID PRINCIPAL ===== */
+.product-frame {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px; /* esquerda cresce, direita fixa */
+  border: 1px solid #d0bc64;
+  border-radius: 14px;
+  padding: 22px;
+  background: #121212;
+}
+
+/* ===== COLUNA ESQUERDA (card único) ===== */
+.product-left {
+  background: #121212;
+  overflow: hidden;
+}
+
+/* ===== IMAGEM DO TOPO ===== */
+.product-media {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 70px;   /* 🔥 distância abaixo da imagem */
+}
+
+.product-media-inner {
+  border: 1px solid #3a3a3a;    /* borda dourada */
+  border-radius: 12px;
+  background: #121212;          /* fundo dark */
+  padding: 35px;                /* espaço interno */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-mainimg {
+  max-width: 67%;     /* 🔥 diminui a imagem sem mexer no card */
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+
+
+.pl-title {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 18px;
+  padding-bottom: 8px;
+}
+/* lista da descrição */
+.pl-list {
+  padding-left: 20px;
+  margin: 15px 0 0;
+  font-size: 15px;
+  color: #d8d8d8;
+  list-style: decimal; /* mantém o número */
+}
+
+.pl-list li {
+  margin-bottom: 15px;   /* 🔥 espaço entre as linhas */
+  line-height: 1.5;      /* altura da linha mais confortável */
+}
+
+.pl-section p,
+.pl-section li {
+  color: #d6d6d6;
+  line-height: 1.55;
+}
+.verify-icon {
+  color: #d0bc64;              /* azul estilo Twitter */
+  margin-left: 2px;            /* espaço extra do texto */
+  cursor: default;
+}
+
+
+/* ===== IMAGENS DENTRO DE SEÇÃO (Descrição / Demonstração) ===== */
+
+.pl-media img {
+  margin-top: 5px;
+  width: 100%;
+  height: auto;
+  max-width: 690px;  /* 🔥 controla o tamanho final */
+  border-radius: 10px;
+}
+/* ===== PAINEL DE COMPRA ===== */
+.product-buy {
+  border: 1px solid #d0bc64;       /* borda dourada */
+  border-radius: 12px;
+  background: #121212;
+  padding: 22px;
+  position: sticky;
+  top: 82px;
+  align-self: start;
+  margin-top: 20px;
+  justify-self: start;
+  margin-left: 20px;
+
+  box-shadow: 0 4px 16px rgba(0,0,0,.6); /* leve sombra */
+}
+
+/* texto vendidos */
+.product-sold {
+  color: #bbb;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* título do produto */
+.product-titleline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+}
+.product-titleline h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+/* badge verde de entrega */
+.badge-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #d0bc64;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  position: relative;
+}
+
+/* check feito só em CSS */
+.badge-green::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 12px;
+  border-right: 2px solid #fff; /* traço */
+  border-bottom: 2px solid #fff; /* traço */
+  transform: rotate(45deg);
+  margin-right: 4px;
+}
+
+.product-stars {
+  display: flex;
+  align-items: center; 
+  gap: 8px;
+  margin: 25px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #363636;
+}
+
+.product-stars .stars {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.product-stars .star,
+.product-stars .muted {
+  display: flex;             /* força centralização */
+  align-items: center;       /* garante alinhamento */
+  line-height: 1;            /* elimina diferença de altura */
+}
+
+.product-stars .star {
+  font-size: 18px;
+  color: #ffe03233;
+}
+
+.product-stars .star.full {
+  color: #ffdf32;
+}
+
+.product-stars .star.half {
+  background: linear-gradient(90deg, #ffdf32 50%, #ffe03233 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.product-stars .muted {
+  font-size: 16px;
+  color: #aaa;
+  position: relative;
+  top: -7px;   /* 🔥 sobe 1px pra alinhar com as estrelas */
+}
+
+
+
+.pay-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  color: #d0bc64;     /* cor verdinha estilo Pix */
+}
+
+.pix-icon {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* preço */
+.product-price {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 18px 0;
+}
+.product-price .rs {
+  font-size: 19px;
+  margin-right: 10px;
+    font-weight: 500;
+
+  color: #fff;
+}
+.product-price .num {
+  color: #fff;
+}
+
+/* disponibilidade */
+.product-stock {
+  color: #d0bc64;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.product-stock .dot {
+  width: 8px;
+  height: 8px;
+  background: #d0bc64;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* quantidade */
+.product-qtyrow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 6px;
+}
+.qtybtn {
+  background: #121212;
+  border: 1px solid #d0bc64;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.qtybtn:hover {
+  background: #222;
+}
+.qtyinput {
+  width: 260px;
+  text-align: center;
+  border: 1px solid #d0bc64;
+  background: #121212;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+/* botões de compra */
+.btn-buy {
+  width: 100%;
+  background: #d0bc64;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-buy:hover {
+  background: #e6cc5a;
+}
+.btn-cart {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #d0bc64;
+  color: #e6e6e6;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-cart:hover {
+  background: #d0bc64;
+  color: #121212;
+}
+
+/* meios de pagamento */
+.product-payblock {
+  border-top: 1px solid #d0bc64;
+  padding-top: 25px;
+}
+.product-payblock h4 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+}
+.pay-select {
+  background: #181818;
+  border: 1px solid #333;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+    color: #ebebeb;
+
+  align-items: center;
+  justify-content: space-between;
+}
+.pay-icon {
+  margin-left: 8px;
+  fill: #d0bc64;
+}
+.product-reviews {
+  margin-top: 28px;
+  overflow: hidden;
+}
+
+.reviews-card {
+  background: #121212;
+  border: 1px solid #d0bc64;
+  border-radius: 12px;
+  padding: 26px;
+}
+
+.reviews-title {
+  margin: 0 0 40px;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* carrossel */
+.review-carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.review-track {
+  display: flex;
+  gap: 16px; /* 🔥 espaçamento entre cards */
+  transition: transform 3.5s ease-in-out; /* 🔥 mais devagar */
+}
+
+.review-card {
+  flex: 0 0 calc((100% - 46px) / 3); 
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  padding: 20px;
+  background: #121212;
+  color: #d6d6d6;
+}
+
+.review-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.review-head strong {
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.review-head .stars {
+  color: #facc15;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 14px;
+  color: #ffe03233;        /* cinza para não selecionado */
+}
+
+.star.full {
+  color: #facc15;     /* amarelo para selecionado */
+}
+
+
+@media (max-width: 768px) {
+  .product-container {
+    padding: 0 12px;
+    max-width: 100%;  /* 🔥 ocupa toda largura da tela */
+  }
+
+  /* grid vira 1 coluna */
+  .product-frame {
+    grid-template-columns: 1fr;
+    max-width: 100%;   /* 🔥 nunca passa da tela */
+    padding: 12px;
+  }
+
+  /* painel de compra */
+  .product-buy {
+    width: 100%;       /* 🔥 ocupa só a tela */
+    max-width: 100%;
+    margin-left: 0;
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  /* imagem */
+  .product-media-inner {
+    padding: 14px;
+  }
+  .product-mainimg {
+    max-width: 90%;    /* 🔥 menor para caber sempre */
+    height: auto;
+  }
+
+  /* cards de review */
+  .review-card {
+    flex: 0 0 100%;    /* 🔥 1 por vez no mobile */
+    max-width: 100%;
+    padding: 14px;
+  }
+}
+/* ============================= */
+/* Celulares grandes e médios <= 768px (já feito) */
+/* ============================= */
+
+/* ============================= */
+/* Celulares pequenos <= 480px */
+/* ============================= */
+@media (max-width: 480px) {
+  .product-container {
+    padding: 0 10px;
+  }
+
+  .product-frame {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .product-mainimg {
+    max-width: 95%;  /* imagem ocupa mais da tela */
+  }
+
+  .product-buy {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .product-titleline h1 {
+    font-size: 16px;
+  }
+
+  .product-price {
+    font-size: 22px;
+  }
+  .product-price .rs {
+    font-size: 14px;
+  }
+
+  .qtyinput {
+    width: 90px;
+    font-size: 14px;
+  }
+
+  .btn-buy, .btn-cart {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .review-card {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* ============================= */
+/* Celulares muito pequenos <= 380px */
+/* ============================= */
+@media (max-width: 380px) {
+  .product-mainimg {
+    max-width: 100%;  /* usa toda largura */
+  }
+
+  .product-titleline h1 {
+    font-size: 15px;
+  }
+
+  .product-price {
+    font-size: 20px;
+  }
+
+  .qtybtn {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .qtyinput {
+    width: 80px;
+    padding: 6px 0;
+  }
+
+  .btn-buy, .btn-cart {
+    font-size: 13px;
+    padding: 10px;
+  }
+}

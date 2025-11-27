@@ -1,0 +1,563 @@
+.cart-root {
+  color: #fff;
+}
+
+.cart-container {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  padding-bottom: 240px; /* 🔥 espaço extra antes do footer */
+}
+
+
+.cart-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cart-subtitle {
+  margin-bottom: 24px;
+  color: #aaa;
+}
+
+.cart-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 2.0fr 0.7fr; /* meio mais largo */
+  gap: 20px;
+}
+
+.cart-box {
+  background: #121212;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.cart-box h3 {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.cart-pay {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background: #1a1a1a;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;             /* espaço entre ícone e texto */
+  justify-content: flex-start;  /* 🔥 agora fica à esquerda */
+
+  transition: all 0.2s ease-in-out;
+}
+
+.cart-pay:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+.pix-icon {
+  color: #ffd700;
+  flex-shrink: 0;
+}
+
+
+.cart-box label {
+  font-size: 14px;
+  margin-top: 20px;
+  display: block;
+  color: #ddd;
+}
+
+.cart-box input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background: #1a1a1a;
+  color: #fff;
+  outline: none; /* remove a borda azul padrão */
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-box input:focus {
+  border: 1px solid #ffd700;   /* 🔥 borda amarela */
+}
+
+
+.cart-coupon {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  border-radius: 8px;
+  border: 1px dashed #ffd700;
+  background: transparent;
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.cart-product {
+  display: flex;
+  align-items: center;
+  border: 1px solid #2a2a2a;
+  padding: 12px 16px;   /* 🔥 menos espaço lateral */
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: #181818;
+}
+
+.cart-product img {
+  margin-left: 0;       /* 🔥 remove deslocamento da imagem */
+}
+
+.cart-prod-info {
+  flex: 1;
+  margin-left: 18px;     /* 🔥 encosta mais o texto na imagem */
+}
+
+.cart-prod-info h4 {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.cart-remove {
+  color: #ffd700;
+  background: none;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.qtybtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #131313;
+    border: 1px solid #ffd9007c;
+
+  color: #eeeeee;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-qty input {
+  width: 40px;
+  text-align: center;
+  background: #131313;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.cart-price {
+  font-weight: 600;
+  min-width: 100px;
+  text-align: right;
+}
+
+.cart-resumo {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.cart-resumo p {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0;
+}
+
+.cart-total {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+.cart-continue {
+  width: 100%;
+  margin-top: 18px;
+  background: #ffd700;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #ffffff;
+  text-align: center;
+
+  /* 🔥 animação */
+  animation: pulse 1.5s infinite;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Fundo do modal */
+.pix-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 7, 7, 0.986);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Estilo da mensagem de erro do email */
+.email-error {
+  color: #ff4d4d;        /* vermelho chamativo */
+  font-size: 13px;       /* fonte menor */
+  margin-top: 6px;       /* espaço entre input e erro */
+  margin-bottom: 10px;   /* espaço inferior */
+  line-height: 1.4;      /* altura da linha agradável */
+  font-weight: 500;      /* levemente mais forte */
+}
+
+/* Caixa do modal */
+.pix-modal {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 42px;
+  width: 480px;
+  max-width: 95%;
+  color: #fff;
+  position: relative;
+  text-align: center;
+}
+
+/* Botão de fechar */
+.pix-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #ffff0017;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* QR Code */
+.pix-qr img {
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+/* Card do código PIX */
+.pix-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.pix-label {
+  font-size: 14px;
+  margin-bottom: 13px;
+  color: #a5a5a5;
+}
+
+/* Campo + botão copiar */
+.pix-code-group {
+  display: flex;
+  align-items: center;
+  background: #1d1d1d;
+  border: 1px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pix-code-group textarea {
+  flex: 1;
+  background: transparent;
+  color: #fff;
+  border: none;
+  resize: none;
+  padding: 10px;
+  font-size: 13px;
+  height: 70px;
+}
+.btn-copy {
+  background: #ffcc00;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+  height: 80%;              /* 🔹 menor que o textarea */
+  border-radius: 6px;      /* 🔹 arredonda */
+  margin-right: 10px;        /* 🔹 afasta da borda direita */
+  margin-left: 0px;         /* 🔹 afasta do texto */
+  transition: 0.2s;
+}
+
+.btn-copy:hover {
+  background: #e6b800;
+}
+
+/* Texto embaixo */
+.pix-info {
+  font-size: 14px;
+  color: #b9b9b9;
+  margin: 10px 0 18px;
+}
+
+/* Barra de progresso */
+.pix-progress {
+  margin: 16px auto;
+  height: 26px;                /* 🔹 mais grosso */
+  width: 100%;
+  background: #181818;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;          /* necessário pro timer ficar dentro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Barra amarela animada */
+.pix-progress .progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #ffcc00;
+  animation: countdown 300s linear forwards; /* 5 minutos */
+  z-index: 1;
+}
+
+/* Timer centralizado dentro da barra */
+.pix-progress .pix-timer {
+  position: relative;
+  z-index: 2;
+  font-size: 16px;
+  color: #ffffff;   /* contraste com o fundo amarelo */
+}
+
+.pix-code-group textarea {
+  flex: 1;
+  background: #1d1d1d;
+  color: #fff;
+  border: none;
+  resize: none;
+  padding: 10px;
+  font-size: 12px;
+  height: 100px;
+  overflow: hidden;      /* 🚫 tira barra de rolagem */
+  white-space: pre-wrap; /* 🔹 quebra de linha automática */
+  word-wrap: break-word; /* 🔹 força quebra de palavras grandes */
+}
+
+@keyframes countdown {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 3px 5px rgba(255, 215, 0, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6);
+  }
+}
+/* ============================= */
+/* 📱 MOBILE (<= 768px) */
+/* ============================= */
+@media (max-width: 768px) {
+  .cart-container {
+    margin: 20px auto;
+    padding: 0 14px 120px;
+    max-width: 100%;
+  }
+
+  .cart-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .cart-subtitle {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  /* grid vira 1 coluna */
+  .cart-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cart-box {
+    padding: 16px;
+  }
+  .cart-box h3 {
+    font-size: 16px;
+  }
+
+  /* produto no carrinho */
+  .cart-product {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+  .cart-product img {
+    width: 56px;
+    height: 56px;
+  }
+  .cart-prod-info {
+    margin-left: 10px;
+    flex: 1;
+  }
+  .cart-prod-info h4 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .cart-price {
+    min-width: auto;
+    font-size: 14px;
+  }
+
+  /* inputs */
+  .cart-box input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* botões */
+  .cart-pay,
+  .cart-coupon,
+  .cart-continue {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  /* resumo */
+  .cart-resumo {
+    font-size: 13px;
+  }
+  .cart-total {
+    font-size: 16px;
+  }
+
+  /* modal */
+  .pix-modal {
+    width: 95%;
+    padding: 24px 16px;
+  }
+  .pix-qr img {
+    width: 160px;
+    height: 160px;
+  }
+  .pix-code-group textarea {
+    font-size: 12px;
+    height: 80px;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE PEQUENO (<= 480px) */
+/* ============================= */
+@media (max-width: 480px) {
+  .cart-title {
+    font-size: 18px;
+  }
+  .cart-subtitle {
+    font-size: 12px;
+  }
+
+  .cart-product {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cart-qty {
+    margin-top: 6px;
+    gap: 10px;
+  }
+
+  .qtybtn {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+  .cart-qty input {
+    width: 36px;
+    font-size: 13px;
+  }
+
+  .cart-price {
+    align-self: flex-end;
+    font-size: 13px;
+  }
+
+  .btn-copy {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+/* ============================= */
+/* 📱 CELULARES MUITO PEQUENOS (<= 380px) */
+/* ============================= */
+@media (max-width: 380px) {
+  .cart-title {
+    font-size: 16px;
+  }
+  .cart-box {
+    padding: 12px;
+  }
+  .cart-box h3 {
+    font-size: 14px;
+  }
+
+  .cart-product img {
+    width: 48px;
+    height: 48px;
+  }
+  .cart-prod-info h4 {
+    font-size: 12px;
+  }
+
+  .cart-price {
+    font-size: 12px;
+  }
+
+  .cart-pay,
+  .cart-coupon,
+  .cart-continue {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .pix-qr img {
+    width: 140px;
+    height: 140px;
+  }
+}

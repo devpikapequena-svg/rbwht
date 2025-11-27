@@ -1,0 +1,137 @@
+.sucess-root {
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sucess-container {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 32px;
+  background: #121212;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  text-align: center;
+}
+
+.sucess-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffd700;
+}
+
+.sucess-subtitle {
+  font-size: 16px;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+.sucess-card {
+  text-align: left;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.sucess-card p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.sucess-btn {
+  background: #ffd700;
+  color: #000;
+  font-weight: 600;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sucess-btn:hover {
+  transform: scale(1.05);
+}
+/* ============================= */
+/* 📱 MOBILE (<= 768px) */
+/* ============================= */
+@media (max-width: 768px) {
+  .sucess-container {
+    margin: 40px 12px;      /* menos espaço lateral */
+    padding: 20px 16px;     /* padding reduzido */
+    max-width: 100%;        /* ocupa largura total */
+  }
+
+  .sucess-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .sucess-subtitle {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .sucess-card {
+    padding: 16px;
+  }
+  .sucess-card p {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+
+  .sucess-btn {
+    width: 100%;          /* botão ocupa a tela toda */
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE PEQUENO (<= 480px) */
+/* ============================= */
+@media (max-width: 480px) {
+  .sucess-title {
+    font-size: 20px;
+  }
+  .sucess-subtitle {
+    font-size: 13px;
+  }
+
+  .sucess-card p {
+    font-size: 13px;
+  }
+
+  .sucess-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* ============================= */
+/* 📱 CELULARES MUITO PEQUENOS (<= 380px) */
+/* ============================= */
+@media (max-width: 380px) {
+  .sucess-title {
+    font-size: 18px;
+  }
+  .sucess-subtitle {
+    font-size: 12px;
+  }
+
+  .sucess-card {
+    padding: 12px;
+  }
+  .sucess-card p {
+    font-size: 12px;
+  }
+
+  .sucess-btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
