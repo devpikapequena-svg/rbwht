@@ -1,84 +1,31 @@
-'use server';
-
-import { NextRequest, NextResponse } from 'next/server';
-import getConfig from 'next/config';
-import { sendOrderToUtmify, formatToUtmifyDate } from '@/lib/utmifyService';
-import { UtmifyOrderPayload } from '@/interfaces/utmify';
-
-const { serverRuntimeConfig } = getConfig();
-
-/**
- * Notificação clean no Discord para pagamentos aprovados
- */
-async function notifyDiscordPaymentApproved(data: {
-  id: string;
-  name: string;
-  email: string;
-  amount: number; // centavos
-}) {
-  const discordWebhookUrl = serverRuntimeConfig.DISCORD_WEBHOOK_URL;
-  if (!discordWebhookUrl) return;
-
-  const valorReais = (data.amount / 100).toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  });
-
-  const embed = {
-    embeds: [
-      {
-        title: 'Pagamento aprovado',
-        color: 0x3498db,
-        fields: [
-          { name: 'Pedido', value: data.id, inline: false },
-          { name: 'Cliente', value: data.name, inline: true },
-          { name: 'Email', value: data.email, inline: true },
-          { name: 'Valor', value: valorReais, inline: true },
-          {
-            name: 'Data',
-            value: new Date().toLocaleString('pt-BR'),
-            inline: true,
-          },
-        ],
-        footer: { text: 'Oferta • BuckPay' },
-      },
-    ],
-  };
-
-  try {
-    await fetch(discordWebhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(embed),
-    });
-  } catch (err) {
-    console.error('Erro ao enviar webhook de pagamento aprovado:', err);
-  }
-}
+// app/api/buckpay-webhook/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+import { sendOrderToUtmify, formatToUtmifyDate } from '@/lib/utmifyService'
+import { UtmifyOrderPayload } from '@/interfaces/utmify'
 
 export async function POST(request: NextRequest) {
-  let requestBody;
+  let requestBody
   try {
-    requestBody = await request.json();
+    requestBody = await request.json()
 
-    const { event, data } = requestBody;
+    const { event, data } = requestBody
     if (!event || !data || !data.id || !data.status) {
-      return NextResponse.json({ error: 'Payload inválido' }, { status: 400 });
+      return NextResponse.json({ error: 'Payload inválido' }, { status: 400 })
     }
 
-    const transactionId = data.id;
+    const transactionId = data.id
 
     // Apenas se o pagamento estiver aprovado
     if (
       event === 'transaction.processed' &&
       (data.status === 'paid' || data.status === 'approved')
     ) {
-      const buckpayData = data;
-      const tracking = buckpayData.tracking || {};
-      const utm = tracking.utm || {};
+      const buckpayData = data
+      const tracking = buckpayData.tracking || {}
+      const utm = tracking.utm || {}
 
       // Normaliza produtos
-      let productsForUtmify = [];
+      let productsForUtmify: UtmifyOrderPayload['products'] = []
       if (buckpayData.items && Array.isArray(buckpayData.items)) {
         productsForUtmify = buckpayData.items.map((item: any) => ({
           id: item.id || `prod_${Date.now()}`,
@@ -87,19 +34,24 @@ export async function POST(request: NextRequest) {
           planName: null,
           quantity: item.quantity || 1,
           priceInCents: item.amount || item.discount_price || 0,
-        }));
+        }))
       } else if (buckpayData.offer) {
         productsForUtmify = [
           {
             id: buckpayData.offer.id || `prod_${Date.now()}`,
-            name: buckpayData.offer.name || buckpayData.offer.title || 'Produto',
+            name:
+              buckpayData.offer.name ||
+              buckpayData.offer.title ||
+              'Produto',
             planId: null,
             planName: null,
             quantity: buckpayData.offer.quantity || 1,
             priceInCents:
-              buckpayData.offer.amount || buckpayData.offer.discount_price || 0,
+              buckpayData.offer.amount ||
+              buckpayData.offer.discount_price ||
+              0,
           },
-        ];
+        ]
       } else {
         productsForUtmify = [
           {
@@ -110,11 +62,11 @@ export async function POST(request: NextRequest) {
             quantity: 1,
             priceInCents: buckpayData.total_amount || 0,
           },
-        ];
+        ]
       }
 
       // IP do request
-      const ip = request.headers.get('x-forwarded-for') ?? '127.0.0.1';
+      const ip = request.headers.get('x-forwarded-for') ?? '127.0.0.1'
 
       // Payload para Utmify
       const utmifyPayload: UtmifyOrderPayload = {
@@ -129,7 +81,8 @@ export async function POST(request: NextRequest) {
           name: buckpayData.buyer.name,
           email: buckpayData.buyer.email,
           phone: buckpayData.buyer.phone?.replace(/\D/g, '') || null,
-          document: buckpayData.buyer.document?.replace(/\D/g, '') || null,
+          document: buckpayData.buyer.document
+            ?.replace(/\D/g, '') || null,
           country: 'BR',
           ip,
         },
@@ -151,26 +104,25 @@ export async function POST(request: NextRequest) {
           currency: 'BRL',
         },
         isTest: false,
-      };
+      }
 
-      // 🔔 Notificação bonita
-      await notifyDiscordPaymentApproved({
-        id: transactionId,
-        name: buckpayData.buyer.name,
-        email: buckpayData.buyer.email,
-        amount: buckpayData.total_amount,
-      });
+      // 🔁 Envia pro Utmify (sem enviar nada pro Discord)
+      await sendOrderToUtmify(utmifyPayload)
 
-      // Envia pro Utmify
-      await sendOrderToUtmify(utmifyPayload);
+      console.log(
+        `[Webhook BuckPay] Pedido ${transactionId} enviado para UTMify com sucesso.`,
+      )
     }
 
     return NextResponse.json({
       success: true,
       message: 'Webhook processado com sucesso',
-    });
+    })
   } catch (error: any) {
-    console.error('[Webhook BuckPay] Erro fatal:', error);
-    return NextResponse.json({ error: 'Erro interno no servidor' }, { status: 500 });
+    console.error('[Webhook BuckPay] Erro fatal:', error)
+    return NextResponse.json(
+      { error: 'Erro interno no servidor' },
+      { status: 500 },
+    )
   }
 }
