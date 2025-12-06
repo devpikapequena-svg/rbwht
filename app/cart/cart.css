@@ -481,6 +481,99 @@
     height: 80px;
   }
 }
+.pix-whats-box {
+  margin-top: 18px;
+  padding: 14px 14px 16px;
+  background: #141414;
+  border-radius: 10px;
+  border: 1px solid #262626;
+  position: relative;
+  font-size: 13px;
+  color: #eaeaea;
+}
+
+/* barrinha sutil na esquerda */
+.pix-whats-box::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffd54a, #ffb300);
+}
+
+.pix-whats-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.pix-whats-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #202020;
+  font-size: 15px;
+}
+
+.pix-whats-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.pix-whats-text {
+  font-size: 12px;
+  color: #bbbbbb;
+  margin: 2px 0 0;
+}
+
+.pix-whats-extra {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #d2d2d2;
+  line-height: 1.5;
+}
+
+.pix-whats-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #25d36633;
+  background: #1a1a1a;
+  color: #e8ffe8;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.pix-whats-btn-icon {
+  font-size: 14px;
+}
+
+.pix-whats-btn:hover {
+  background: #1f2b21;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px #25d36633;
+}
+
+.pix-whats-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
 
 /* ============================= */
 /* 📱 MOBILE PEQUENO (<= 480px) */

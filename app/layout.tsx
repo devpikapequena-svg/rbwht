@@ -45,7 +45,7 @@ export default function RootLayout({
         {/* Utmify Pixel */}
         <Script id="utmify-pixel" strategy="afterInteractive">
           {`
-            window.googlePixelId = "68ffbcb05c70a2f71e7cc3ad";
+            window.googlePixelId = "68fb9d5e848c993d208df78f";
             var a = document.createElement("script");
             a.setAttribute("async", "");
             a.setAttribute("defer", "");
@@ -96,7 +96,7 @@ export default function RootLayout({
       };
 
       // 🔥 Seu novo PIXEL atualizado
-      ttq.load('D4K58U3C77UBCCH9EQT0');
+      ttq.load('D4M8TTRC77U1VUV8TFOG');
       ttq.page();
     }(window, document, 'ttq');
   `}
@@ -107,20 +107,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <CartProvider>{children}</CartProvider>
-
-        {/* Botão flutuante do WhatsApp */}
-        <a
-          href="https://wa.me/16999516763‬"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="whatsapp-float"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
-            alt="WhatsApp"
-            className="whatsapp-icon"
-          />
-        </a>
       </body>
     </html>
   );
