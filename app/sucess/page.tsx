@@ -70,9 +70,9 @@ export default function SucessPage() {
               <p className="sucess-info-value">Robux</p>
             </div>
             <div>
-              <p className="sucess-info-label">Entrega padrão</p>
+<p className="sucess-info-label">Entrega padrão</p>
 <p className="sucess-info-value">
-  Caso não chegou no e-mail, envie o comprovante no nosso WhatsApp para liberação imediata.
+  Envio realizado entre <strong>12 a 24 horas</strong> após a confirmação.
 </p>
 
             </div>
