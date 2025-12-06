@@ -66,7 +66,7 @@ useEffect(() => {
         });
 
         localStorage.removeItem("external_id");
-        router.push("/success");
+        router.push("/sucess");
       } else if (!stopped) {
         setTimeout(checkStatus, 7000);
       }
