@@ -45,7 +45,7 @@ export default function RootLayout({
         {/* Utmify Pixel */}
         <Script id="utmify-pixel" strategy="afterInteractive">
           {`
-            window.googlePixelId = "68fb9d5e848c993d208df78f";
+            window.googlePixelId = "68ffbcb05c70a2f71e7cc3ad";
             var a = document.createElement("script");
             a.setAttribute("async", "");
             a.setAttribute("defer", "");
@@ -96,7 +96,7 @@ export default function RootLayout({
       };
 
       // 🔥 Seu novo PIXEL atualizado
-      ttq.load('D4M8TTRC77U1VUV8TFOG');
+      ttq.load('D4K58U3C77UBCCH9EQT0');
       ttq.page();
     }(window, document, 'ttq');
   `}
@@ -107,6 +107,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <CartProvider>{children}</CartProvider>
+
+  
       </body>
     </html>
   );
