@@ -78,67 +78,6 @@ export default function SucessPage() {
             </div>
           </div>
         </div>
-
-        {/* Box pedindo comprovante no WhatsApp */}
-        <div className="sucess-priority">
-          <div className="sucess-priority-header">
-            <div className="sucess-priority-icon">📲</div>
-            <div>
-              <p className="sucess-priority-title">
-                Envie o comprovante no WhatsApp
-              </p>
-            </div>
-            <span className="sucess-priority-chip">Atendimento rápido</span>
-          </div>
-
-          <div className="sucess-priority-items">
-            <div className="sucess-priority-item">
-              <span className="spi-icon">✓</span>
-              <span>
-                Confirmação manual do pagamento em poucos minutos, dentro do
-                horário de atendimento.
-              </span>
-            </div>
-            <div className="sucess-priority-item">
-              <span className="spi-icon">✓</span>
-              <span>
-                Protege você de possíveis falhas de pagamento.
-              </span>
-            </div>
-            <div className="sucess-priority-item">
-              <span className="spi-icon">✓</span>
-              <span>
-                Assim que confirmado, seu pedido entra imediatamente na fila de
-                envio.
-              </span>
-            </div>
-          </div>
-
-          <div className="sucess-priority-footer">
-            <div className="sucess-priority-price">
-              <span className="price-label">Como fazer</span>
-              <span className="price-value">
-                Envie o comprovante + e-mail usado na compra.
-              </span>
-            </div>
-
-            <button
-              className="sucess-priority-btn"
-              onClick={handleSendWhatsApp}
-            >
-              Enviar comprovante no WhatsApp
-            </button>
-          </div>
-
-          <p className="sucess-priority-note">
-            Dica: envie o print completo do comprovante e, se possível, também o
-            nome completo para localizarmos mais rápido.
-          </p>
-        </div>
-
-        <button className="sucess-btn" onClick={() => router.push("/")}>
-          Voltar para a Loja
-        </button>
       </main>
 
       <Footer />
