@@ -19,7 +19,7 @@ export default function CartPage() {
 const [showSupportBox, setShowSupportBox] = useState(false);
 
   // 🔹 Troque pelo SEU número real de WhatsApp (só números, com DDI e DDD)
-  const whatsappNumber = "5575920018871";
+  const whatsappNumber = "5511920076371";
 
   const handleSendWhatsApp = () => {
     const defaultMessage =
