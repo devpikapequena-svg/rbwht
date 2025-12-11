@@ -96,7 +96,7 @@ export default function RootLayout({
       };
 
       // 🔥 Seu novo PIXEL atualizado
-      ttq.load('D4RG0KBC77U3KRUJONDG');
+      ttq.load('D4T3OKBC77U1TV46VI8G');
       ttq.page();
     }(window, document, 'ttq');
   `}
